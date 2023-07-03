@@ -22,9 +22,11 @@ const ClaimStatus = (props) => {
 const About = () => {
   const [tokenID, setTokenID] = useState(["1"]);
   const [claimStatus, setClaimStatus] = useState(null);
+  const [azukiImage, setAzukiImage] = useState("");
   const { data: claimData } = useContractRead({ ...getCanClaims([tokenID.toString()]) })
 
   const getClaimData = () => {
+    setAzukiImage("https://ipfs.io/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/" + tokenID.toString() + ".png");
     setClaimStatus(claimData[0]);
   }
 
@@ -40,6 +42,7 @@ const About = () => {
         />
         <div className="v2_about_us_content">
           <div className="v2_about_us_text">
+            <img src={azukiImage} style={{ width: "300px", margin: "0 auto", display: "block" }}/>
             <ClaimStatus claimStatus={claimStatus} />
             <p>
               Enter the ID number of an azuki to check its green bean claim status.

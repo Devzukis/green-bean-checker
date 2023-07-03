@@ -3,7 +3,7 @@ import aboutBg from "../../../assets/images/nft/v2_about_bg.png"
 const AboutStyleWrapper = styled.section` 
     min-height: 615px;
     padding-top: 190px;
-    padding-bottom: 0px;
+    padding-bottom: 180px;
     background: url(${aboutBg});
     background-position: center center;
     background-repeat: no-repeat;
