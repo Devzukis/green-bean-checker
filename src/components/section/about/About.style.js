@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import aboutBg from "../../../../assets/images/nft/v2_about_bg.png"
+import aboutBg from "../../../assets/images/nft/v2_about_bg.png"
 const AboutStyleWrapper = styled.section` 
     min-height: 615px;
     padding-top: 190px;

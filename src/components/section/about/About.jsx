@@ -1,19 +1,19 @@
-import SectionTitle from "../../../../common/sectionTitle";
-import aboutImageLeft from "../../../../assets/images/nft/about_image_left.png";
-import aboutImageRight from "../../../../assets/images/nft/about_image_right.png";
+import SectionTitle from "../../../common/sectionTitle";
+import aboutImageLeft from "../../../assets/images/nft/about_image_left.png";
+import aboutImageRight from "../../../assets/images/nft/about_image_right.png";
 import AboutStyleWrapper from "./About.style";
 
 import { useAccount, useContractRead } from 'wagmi';
-import { getCanClaims, maxSupplyCall } from "../../../../contract/config";
+import { getCanClaims, maxSupplyCall } from "../../../contract/config";
 import { useState } from "react";
 
 const About = () => {
   const [tokenID, setTokenID] = useState(["1"]);
   const [claimStatus, setClaimStatus] = useState(false);
-  const { data: totalMintedData } = useContractRead({ ...getCanClaims([tokenID.toString()]) })
+  const { data: claimData } = useContractRead({ ...getCanClaims([tokenID.toString()]) })
 
   const getClaimData = () => {
-    setClaimStatus(totalMintedData[0]);
+    setClaimStatus(claimData[0]);
   }
 
   return (

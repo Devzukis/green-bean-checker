@@ -4,7 +4,7 @@ import { FaDiscord, FaWallet } from "react-icons/fa";
 import { MdNotes } from "react-icons/md";
 import Button from "../../../../common/button";
 import NavWrapper from "./Header.style";
-import MobileMenu from "../mobileMenu/MobileMenu";
+import MobileMenu from "../mobile/MobileMenu";
 import logo from "../../../../assets/images/logo.jpg";
 
 import { ConnectButton } from '@rainbow-me/rainbowkit';
