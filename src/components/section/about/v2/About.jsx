@@ -9,11 +9,11 @@ import { useState } from "react";
 
 const About = () => {
   const [tokenID, setTokenID] = useState(["1"]);
+  const [claimStatus, setClaimStatus] = useState(false);
   const { data: totalMintedData } = useContractRead({ ...getCanClaims([tokenID.toString()]) })
 
   const getClaimData = () => {
-    console.log(totalMintedData)
-    console.log(parseInt(tokenID))
+    setClaimStatus(totalMintedData[0]);
   }
 
   return (
@@ -28,6 +28,13 @@ const About = () => {
         />
         <div className="v2_about_us_content">
           <div className="v2_about_us_text">
+            {
+              claimStatus 
+              ? 
+              <p style={{color: "green"}}>Claimed</p>
+              : 
+              <p style={{color: "red"}}>Unclaimed</p>
+            }
             <p>
               Enter the ID number of an azuki to check its green bean claim status.
             </p>
