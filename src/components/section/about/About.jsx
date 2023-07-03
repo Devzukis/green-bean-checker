@@ -3,13 +3,25 @@ import aboutImageLeft from "../../../assets/images/nft/about_image_left.png";
 import aboutImageRight from "../../../assets/images/nft/about_image_right.png";
 import AboutStyleWrapper from "./About.style";
 
-import { useAccount, useContractRead } from 'wagmi';
-import { getCanClaims, maxSupplyCall } from "../../../contract/config";
+import { useContractRead } from 'wagmi';
+import { getCanClaims } from "../../../contract/config";
 import { useState } from "react";
+
+const ClaimStatus = (props) => {
+  let element = "";
+  if(props.claimStatus !== null) {
+    if(props.claimStatus) {
+      element = <p style={{color: "green"}}>Claimed</p>;
+    } else {
+      element = <p style={{color: "red"}}>Unclaimed</p>;
+    }
+  }
+  return element;
+}
 
 const About = () => {
   const [tokenID, setTokenID] = useState(["1"]);
-  const [claimStatus, setClaimStatus] = useState(false);
+  const [claimStatus, setClaimStatus] = useState(null);
   const { data: claimData } = useContractRead({ ...getCanClaims([tokenID.toString()]) })
 
   const getClaimData = () => {
@@ -28,13 +40,7 @@ const About = () => {
         />
         <div className="v2_about_us_content">
           <div className="v2_about_us_text">
-            {
-              claimStatus 
-              ? 
-              <p style={{color: "green"}}>Claimed</p>
-              : 
-              <p style={{color: "red"}}>Unclaimed</p>
-            }
+            <ClaimStatus claimStatus={claimStatus} />
             <p>
               Enter the ID number of an azuki to check its green bean claim status.
             </p>
