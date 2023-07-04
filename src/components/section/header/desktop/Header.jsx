@@ -1,6 +1,6 @@
 import { useModal } from "../../../../utils/ModalContext";
 import { useEffect, useState } from "react";
-import { FaDiscord, FaWallet } from "react-icons/fa";
+import { FaDiscord, FaTwitter, FaWallet } from "react-icons/fa";
 import { MdNotes } from "react-icons/md";
 import Button from "../../../../common/button";
 import NavWrapper from "./Header.style";
@@ -34,6 +34,10 @@ const Header = () => {
     window.open('https://discord.com/invite/2F9XuN8s', '_blank');
   }
 
+  const onTwitterClick = () => {
+    window.open('https://twitter.com/devzukis', '_blank');
+  }
+
   return (
     <>
       <NavWrapper className="bithu_header" id="navbar">
@@ -54,6 +58,9 @@ const Header = () => {
                 </button>
                 <Button sm variant="outline" className="join_btn" onClick={onDiscordClick}>
                   <FaDiscord /> Join
+                </Button>
+                <Button sm variant="outline" className="join_btn" onClick={onTwitterClick}>
+                  <FaTwitter /> Follow
                 </Button>
 
                 <ConnectButton

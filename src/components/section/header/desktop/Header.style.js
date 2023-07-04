@@ -166,6 +166,7 @@ const NavWrapper = styled.nav`
       height: 50px;
       width: 114px;
       background-color: transparent;
+      margin-right: 5px;
     }
 
     .connect_btn {
