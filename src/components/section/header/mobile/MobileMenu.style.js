@@ -39,6 +39,7 @@ const MobileMenuStyleWrapper = styled.div`
   }
 
   .mobile_menu_logo {
+    padding-top: 3rem;
     width: 100%;
     position: relative;
   }
@@ -46,7 +47,7 @@ const MobileMenuStyleWrapper = styled.div`
   .mobile_menu_close_btn {
     position: absolute;
     right: 0px;
-    top: 50%;
+    top: 0px;
     background: none;
     border: none;
     outline: none;

@@ -30,13 +30,10 @@ const MobileMenu = ({ mobileMenuhandle }) => {
           </button>
         </div>
         <div className="mobile_menu_social_links">
-          <a href="# ">
-            <img src={openseaIcon} alt="devzukis social icon" />
-          </a>
-          <a href="# ">
+          <a href="https://twitter.com/devzukis" target="_blank">
             <FaTwitter />
           </a>
-          <a href="# ">
+          <a href="https://discord.com/invite/2F9XuN8s" target="_blank">
             <FaDiscord />
           </a>
         </div>
