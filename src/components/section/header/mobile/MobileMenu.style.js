@@ -129,16 +129,6 @@ const MobileMenuStyleWrapper = styled.div`
     }
   }
 
-  .connect_btn {
-    width: 100%;
-    margin-top: 30px;
-    border: none;
-    svg {
-      margin-right: 20px;
-      font-size: 20px;
-    }
-  }
-
   .iekbcc0.ju367va.ju367v1n{
     height: 50px;
     width: 100%;

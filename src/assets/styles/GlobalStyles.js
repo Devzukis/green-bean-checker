@@ -106,14 +106,6 @@ body, p, a{
     font-weight: 400 !important;
 }
 
-#rk_connect_title{
-    font-family: 'Bakbak One', cursive;
-    font-weight: 400;
-    text-transform: uppercase;
-    font-size: 22px;
-    line-height: 24px;
-}
-
 .ju367v11{
     font-family: 'Bakbak One', cursive !important;
 }

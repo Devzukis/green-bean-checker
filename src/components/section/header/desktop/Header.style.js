@@ -168,18 +168,6 @@ const NavWrapper = styled.nav`
       background-color: transparent;
       margin-right: 5px;
     }
-
-    .connect_btn {
-      height: 50px;
-      min-width: 150px;
-      border: none;
-      margin-left: 20px;
-      background: rgba(255, 255, 255, 0.2);
-
-      svg {
-        font-size: 20px;
-      }
-    }
   }
 
   .iekbcc0.ju367va.ju367v1n{
@@ -235,9 +223,6 @@ const NavWrapper = styled.nav`
 
   @media (max-width: 667px) {
     .bithu_menu_btns {
-      .connect_btn {
-        display: none;
-      }
 
       .menu_btn {
         svg {
