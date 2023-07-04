@@ -1,6 +1,6 @@
 import { useModal } from "../../../../utils/ModalContext";
 import { useEffect, useState } from "react";
-import { FaDiscord, FaTwitter, FaWallet } from "react-icons/fa";
+import { FaDiscord, FaTwitter } from "react-icons/fa";
 import { MdNotes } from "react-icons/md";
 import Button from "../../../../common/button";
 import NavWrapper from "./Header.style";
@@ -8,7 +8,6 @@ import MobileMenu from "../mobile/MobileMenu";
 import logo from "../../../../assets/images/logo.jpg";
 
 const Header = () => {
-  const { walletModalHandle } = useModal();
   const [isMobileMenu, setMobileMenu] = useState(false);
   const handleMobileMenu = () => {
     setMobileMenu(!isMobileMenu);
