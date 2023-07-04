@@ -10,6 +10,21 @@ const AboutStyleWrapper = styled.section`
     background-size: cover;
     position: relative; 
 
+    .pill {
+        color: white;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        border-radius: 1rem;
+        padding: 0 1rem;
+        &.green {
+            background: green;
+        }
+        &.red {
+            background: red;
+        }
+    }
+
     .v2_about_overlay {
         width: 100%;
         height: 70%;

@@ -11,9 +11,9 @@ const ClaimStatus = (props) => {
   let element = "";
   if(props.claimStatus !== null) {
     if(props.claimStatus) {
-      element = <p style={{color: "green"}}>Can Claim</p>;
+      element = <p class="pill green">Can Claim</p>;
     } else {
-      element = <p style={{color: "red"}}>Can't Claim</p>;
+      element = <p class="pill red">Can't Claim</p>;
     }
   }
   return element;
@@ -42,8 +42,10 @@ const About = () => {
         />
         <div className="v2_about_us_content">
           <div className="v2_about_us_text">
-            <img src={azukiImage} style={{ width: "300px", margin: "0 auto", display: "block" }}/>
-            <ClaimStatus claimStatus={claimStatus} />
+            <div class="imgBox" style={{width: "fit-content", margin: "0 auto", position: "relative"}}>
+              <img src={azukiImage} style={{ width: "300px", margin: "0px auto 3rem", display: "block" }}/>
+              <ClaimStatus claimStatus={claimStatus} />
+            </div>
             <p>
               Enter the ID number of an azuki to check its green bean claim status.
             </p>
