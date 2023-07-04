@@ -14,9 +14,10 @@ const AboutStyleWrapper = styled.section`
         color: white;
         position: absolute;
         bottom: 10px;
-        right: 10px;
         border-radius: 1rem;
         padding: 0 1rem;
+        left: 20px;
+        right: 20px;
         &.green {
             background: green;
         }

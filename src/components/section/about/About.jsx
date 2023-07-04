@@ -11,9 +11,9 @@ const ClaimStatus = (props) => {
   let element = "";
   if(props.claimStatus !== null) {
     if(props.claimStatus) {
-      element = <p class="pill green">Can Claim</p>;
+      element = <p class="pill green">Green Bean Available!</p>;
     } else {
-      element = <p class="pill red">Can't Claim</p>;
+      element = <p class="pill red">Green Bean Already Claimed</p>;
     }
   }
   return element;
