@@ -30,6 +30,10 @@ const Header = () => {
     };
   }, []);
 
+  const onDiscordClick = () => {
+    window.open('https://discord.com/invite/2F9XuN8s', '_blank');
+  }
+
   return (
     <>
       <NavWrapper className="bithu_header" id="navbar">
@@ -48,7 +52,7 @@ const Header = () => {
                 <button className="menu_btn" onClick={() => handleMobileMenu()}>
                   <MdNotes />
                 </button>
-                <Button sm variant="outline" className="join_btn">
+                <Button sm variant="outline" className="join_btn" onClick={onDiscordClick}>
                   <FaDiscord /> Join
                 </Button>
 
