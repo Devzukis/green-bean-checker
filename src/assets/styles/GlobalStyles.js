@@ -24,6 +24,19 @@ body {
     background-color: #040C12 !important; 
 }
 
+[data-rk] {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 991px) {
+    #about {
+        padding-top: 10rem;
+    }
+}
+
 img {
     max-width: 100%;
     height: auto;
