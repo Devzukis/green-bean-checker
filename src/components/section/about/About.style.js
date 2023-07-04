@@ -2,7 +2,7 @@ import styled from "styled-components";
 import aboutBg from "../../../assets/images/nft/v2_about_bg.png"
 const AboutStyleWrapper = styled.section` 
     min-height: 615px;
-    padding-top: 190px;
+    padding-top: 140px;
     padding-bottom: 180px;
     background: url(${aboutBg});
     background-position: center center;
@@ -10,19 +10,30 @@ const AboutStyleWrapper = styled.section`
     background-size: cover;
     position: relative; 
 
-    .pill {
-        color: white;
-        position: absolute;
-        bottom: 10px;
-        border-radius: 1rem;
-        padding: 0 1rem;
-        left: 20px;
-        right: 20px;
+    .bean-bar {
+        position: relative;
+        top: -10px;
+        left: 0;
+        right: 0;
+        font-family: "Bakbak One";
+        font-style: normal;
+        font-weight: 400 !important;
+        line-height: 48px !important;
+        text-transform: uppercase !important;
+        text-align: left !important;
         &.green {
-            background: green;
+            background: #74bab0;
+            font-size: 18px !important;
         }
         &.red {
-            background: red;
+            background: #c35e2d;
+        }
+        img {
+            width: 25px;
+            padding: 10px 0;
+            float: left;
+            margin-left: 10px;
+            margin-right: 10px;
         }
     }
 
@@ -50,7 +61,7 @@ const AboutStyleWrapper = styled.section`
             line-height: 28px;
             text-align: center;
             color: rgba(255, 255, 255, 0.8);
-            margin: 0px;
+            margin: 10px 0 0;
         }
         p+p {
             margin: 20px 0; 
