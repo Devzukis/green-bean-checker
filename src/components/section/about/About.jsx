@@ -10,29 +10,33 @@ import { useState } from "react";
 
 const ClaimStatus = (props) => {
   let text = "";
-  let beanClass = "bean-bar ";
-
-  if(props.hasOwnProperty('claimStatus') && props.claimStatus) {
-    text = "Green Bean Available!";
-    beanClass += "green";
-  } else {
-    text = "Green Bean Unavailable!";
-    beanClass += "red";
+  let element = "";
+  
+  if(props.claimStatus !== null) {
+    if(props.claimStatus === true) {
+      element = <p class="bean-bar green">
+                  <img src={greenBean} />
+                  Green Bean Available!
+                </p>;
+    } else {
+      element = <p class="bean-bar red">
+                  <img src={greenBean} />
+                  Green Bean Unavailable!
+                </p>;
+    }
   }
 
-  return <p class={beanClass}>
-          <img src={greenBean} />
-          {text}
-         </p>;
+  return element;
 }
 
 const ClaimStatusText = (props) => {
   let text = "CHECK IF AN AZUKI HAS CLAIMED THEIR BEAN";
-
-  if(props.hasOwnProperty('claimStatus') && props.claimStatus) {
-    text = "THIS AZUKI HAS NOT CLAIMED THEIR BEAN YET";
-  } else {
-    text = "THIS AZUKI HAS CLAIMED THEIR BEAN";
+  if(props.claimStatus !== null) {
+    if(props.claimStatus) {
+      text = "THIS AZUKI HAS NOT CLAIMED THEIR BEAN YET";
+    } else {
+      text = "THIS AZUKI HAS CLAIMED THEIR BEAN";
+    }
   }
 
   return <SectionTitle
