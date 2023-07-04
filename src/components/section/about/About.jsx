@@ -2,21 +2,49 @@ import SectionTitle from "../../../common/sectionTitle";
 import aboutImageLeft from "../../../assets/images/nft/about_image_left.png";
 import aboutImageRight from "../../../assets/images/nft/about_image_right.png";
 import AboutStyleWrapper from "./About.style";
+import greenBean from "../../../assets/images/icon/bean.png";
 
 import { useContractRead } from 'wagmi';
 import { getCanClaims } from "../../../contract/config";
 import { useState } from "react";
 
 const ClaimStatus = (props) => {
+  let text = "";
   let element = "";
+  
   if(props.claimStatus !== null) {
-    if(props.claimStatus) {
-      element = <p style={{color: "green"}}>Can Claim</p>;
+    if(props.claimStatus === true) {
+      element = <p class="bean-bar green">
+                  <img src={greenBean} />
+                  Green Bean Available!
+                </p>;
     } else {
-      element = <p style={{color: "red"}}>Can't Claim</p>;
+      element = <p class="bean-bar red">
+                  <img src={greenBean} />
+                  Green Bean Unavailable!
+                </p>;
     }
   }
+
   return element;
+}
+
+const ClaimStatusText = (props) => {
+  let text = "CHECK IF AN AZUKI HAS CLAIMED THEIR BEAN";
+  if(props.claimStatus !== null) {
+    if(props.claimStatus) {
+      text = "THIS AZUKI HAS NOT CLAIMED THEIR BEAN YET";
+    } else {
+      text = "THIS AZUKI HAS CLAIMED THEIR BEAN";
+    }
+  }
+
+  return <SectionTitle
+    className="text-center"
+    isCenter={true}
+    title={text}
+    subtitle="GREEN BEAN CHECKER"
+  />;
 }
 
 const About = () => {
@@ -34,20 +62,17 @@ const About = () => {
     <AboutStyleWrapper className="v2_about_us_section" id="about">
       <div className="v2_about_overlay"></div>
       <div className="container">
-        <SectionTitle
-          className="text-center"
-          isCenter={true}
-          title="Check if an Azuki has claimed their bean"
-          subtitle="GREEN BEAN CHECKER"
-        />
+        <ClaimStatusText claimStatus={claimStatus} />
         <div className="v2_about_us_content">
           <div className="v2_about_us_text">
-            <img src={azukiImage} style={{ width: "300px", margin: "0 auto", display: "block" }}/>
-            <ClaimStatus claimStatus={claimStatus} />
+            <div class="imgBox" style={{width: "fit-content", margin: "0 auto", position: "relative"}}>
+              <img src={azukiImage} style={{ width: "300px", margin: "0px auto 3rem", display: "block" }}/>
+              <ClaimStatus claimStatus={claimStatus} />
+            </div>
             <p>
               Enter the ID number of an azuki to check its green bean claim status.
             </p>
-            <div style={{display: "flex", width: "fit-content", margin: "3rem auto 0"}}>
+            <div style={{display: "flex", width: "fit-content", margin: "1rem auto 0"}}>
               <input type="text" id="azukiNumber" placeholder="Enter azuki token number" style={{padding: "0.5rem 2rem"}} onChange={e=>setTokenID([e.target.value+''])}/>
               <button onClick={getClaimData} style={{background: "#be3142", color: "#fff", border: "none", boxShadow: "none", padding: "0.5rem 1rem"}}>Check</button>
             </div>
