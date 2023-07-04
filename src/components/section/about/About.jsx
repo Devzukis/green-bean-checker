@@ -10,14 +10,17 @@ import { useState } from "react";
 
 const ClaimStatus = (props) => {
   let text = "";
+  let beanClass = "bean-bar ";
 
   if(props.hasOwnProperty('claimStatus') && props.claimStatus) {
     text = "Green Bean Available!";
+    beanClass += "green";
   } else {
     text = "Green Bean Unavailable!";
+    beanClass += "red";
   }
 
-  return <p class="bean-bar red">
+  return <p class={beanClass}>
           <img src={greenBean} />
           {text}
          </p>;
@@ -31,7 +34,7 @@ const ClaimStatusText = (props) => {
   } else {
     text = "THIS AZUKI HAS CLAIMED THEIR BEAN";
   }
-  
+
   return <SectionTitle
     className="text-center"
     isCenter={true}
