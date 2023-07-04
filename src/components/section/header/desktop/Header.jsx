@@ -7,8 +7,6 @@ import NavWrapper from "./Header.style";
 import MobileMenu from "../mobile/MobileMenu";
 import logo from "../../../../assets/images/logo.jpg";
 
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-
 const Header = () => {
   const { walletModalHandle } = useModal();
   const [isMobileMenu, setMobileMenu] = useState(false);
@@ -62,23 +60,6 @@ const Header = () => {
                 <Button sm variant="outline" className="join_btn" onClick={onTwitterClick}>
                   <FaTwitter /> Follow
                 </Button>
-
-                <ConnectButton
-                 label="Connect"
-                 chainStatus="none"//icon,name,none
-                 showBalance={false}//true,false
-                 accountStatus="address"//avatar,address,
-                 //className="connect_btn"
-                />
-
-                {/* <Button
-                  sm
-                  variant="hovered"
-                  className="connect_btn"
-                  onClick={() => walletModalHandle()}
-                >
-                  <FaWallet /> Connect
-                </Button> */}
               </div>
             </div>
           </div>
