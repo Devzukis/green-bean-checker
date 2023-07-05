@@ -48,7 +48,7 @@ const About = () => {
             <button className='text-sm text-white bg-red rounded-l-lg p-2 w-fit'>Unclaimed</button>
             <button className='text-sm bg-white rounded-r-lg p-2 w-fit' disabled>Recent Claims</button>
           </div>
-          <div id='azukis' className='grid gap-4 grid-cols-4 pt-10'>
+          <div id='azukis' className='grid gap-4 grid-cols-4 pt-10 overflow-scroll'>
             {
               tokenIds.length > 0 && tokenIds.map(
                 tokenId => {
