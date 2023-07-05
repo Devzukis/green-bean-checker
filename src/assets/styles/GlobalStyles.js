@@ -22,7 +22,7 @@ body {
     line-height: 1.6;
     font-weight: 500;
     overflow-x: hidden; 
-    background-color: #040C12 !important; 
+    background-color: #5abdb3 !important; 
 }
 
 #root {

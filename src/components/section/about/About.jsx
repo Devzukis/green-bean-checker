@@ -1,40 +1,36 @@
+import Card from '../Card';
 import greenBean from "../../../assets/images/greenBean.webp";
-
 import { useContractRead } from 'wagmi';
 import { getCanClaims } from "../../../contract/config";
-import { useState } from "react";
-
-const ClaimStatus = (props) => {
-  let text = "";
-  let element = "";
-  
-  if(props.claimStatus !== null) {
-    if(props.claimStatus === true) {
-      element = <p class="bean-bar green">
-                  <img src={greenBean} />
-                  Green Bean Available!
-                </p>;
-    } else {
-      element = <p class="bean-bar red">
-                  <img src={greenBean} />
-                  Green Bean Unavailable!
-                </p>;
-    }
-  }
-
-  return element;
-}
+import { useState, useEffect } from "react";
 
 const About = () => {
   const [tokenID, setTokenID] = useState(["1"]);
   const [claimStatus, setClaimStatus] = useState(null);
   const [azukiImage, setAzukiImage] = useState("");
+  const [tokenIds, setTokenIds] = useState([]);
   const { data: claimData } = useContractRead({ ...getCanClaims([tokenID.toString()]) })
+  const ipfs = "https://ipfs.io/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/";
 
   const getClaimData = () => {
-    setAzukiImage("https://ipfs.io/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/" + tokenID.toString() + ".png");
+    setAzukiImage(ipfs + tokenID.toString() + ".png");
     setClaimStatus(claimData[0]);
   }
+
+  const getAzukiImage = (tokenId) => {
+    return ipfs + tokenId.toString() + ".png";
+  }
+
+  const getAzukiTokenIds = async () => {
+    const response = await fetch('http://localhost:8080/unclaimed');
+    const data = await response.json();
+    console.log('data: ', data);
+    setTokenIds(data.tokenIds);
+  }
+
+  useEffect(() => {
+    getAzukiTokenIds();
+  }, [])
 
   return (
       <div className="container mx-auto pt-20">
@@ -50,7 +46,18 @@ const About = () => {
           </div>
           <div className='flex justify-center w-fit'>
             <button className='text-sm text-white bg-red rounded-l-lg p-2 w-fit'>Unclaimed</button>
-            <button className='text-sm bg-white rounded-r-lg p-2 w-fit' disabled>Recent Claims (Soon)</button>
+            <button className='text-sm bg-white rounded-r-lg p-2 w-fit' disabled>Recent Claims</button>
+          </div>
+          <div id='azukis' className='grid gap-4 grid-cols-4 pt-10'>
+            {
+              tokenIds.length > 0 && tokenIds.map(
+                tokenId => {
+                  return (
+                    <Card src={getAzukiImage(tokenId)} title={`Azuki #${tokenId}`}/>
+                  )
+                }
+              )
+            }
           </div>
         </div>
       </div>
