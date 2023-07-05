@@ -53,16 +53,6 @@ const About = () => {
             <button className='text-sm bg-white rounded-r-lg p-2 w-fit' disabled>Recent Claims (Soon)</button>
           </div>
         </div>
-        {/* <ClaimStatusText claimStatus={claimStatus} /> */}
-        <div className="v2_about_us_content">
-          <div className="v2_about_us_text">
-            <div class="imgBox" style={{width: "fit-content", margin: "0 auto", position: "relative"}}>
-              <img src={azukiImage} style={{ width: "300px", margin: "0px auto 3rem", display: "block" }}/>
-              <ClaimStatus claimStatus={claimStatus} />
-            </div>
-            
-          </div>
-        </div>
       </div>
   );
 };
