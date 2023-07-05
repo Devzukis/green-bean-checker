@@ -33,7 +33,7 @@ const About = () => {
   }, [])
 
   return (
-      <div className="container mx-auto pt-20">
+      <div className="container mx-auto">
         <div className='flex flex-col items-center gap-4 -mt-5'>
           <img src={greenBean} className='w-72'/>
           <p className='text-4xl text-black text-center font-bold -mt-10'>GREEN BEAN CHECKER</p>
@@ -48,7 +48,7 @@ const About = () => {
             <button className='text-sm text-white bg-red rounded-l-lg p-2 w-fit'>Unclaimed</button>
             <button className='text-sm bg-white rounded-r-lg p-2 w-fit' disabled>Recent Claims</button>
           </div>
-          <div id='azukis' className='grid gap-4 grid-cols-3 sm:grid-cols-4 pt-10 overflow-scroll'>
+          <div id='azukis' className='grid gap-4 grid-cols-3 sm:grid-cols-4 pt-10 overflow-scroll h-[820px]'>
             {
               tokenIds.length > 0 && tokenIds.map(
                 tokenId => {
