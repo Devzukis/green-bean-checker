@@ -42,7 +42,7 @@ const Header = () => {
           {/* Main Menu Start */}
           <div className="bithu_menu_sect">
             <div className="bithu_menu_left_sect">
-              <div className="logo">
+              <div className="logo flex">
                 <a href="/">
                   <img src={logo} alt="devzukis nft logo" style={{width: "60px", borderRadius: "50%"}} />
                 </a>
@@ -50,7 +50,7 @@ const Header = () => {
             </div>
             <div className="bithu_menu_right_sect bithu_v1_menu_right_sect">
               <div className="bithu_menu_btns">
-                <button className="menu_btn" onClick={() => handleMobileMenu()}>
+                <button className="menu_btn px-[6px]" onClick={() => handleMobileMenu()}>
                   <MdNotes />
                 </button>
                 <Button sm variant="outline" className="join_btn" onClick={onDiscordClick}>

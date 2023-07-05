@@ -8,9 +8,9 @@ const SectionTitle = ({ title, subtitle, isCenter, ...props }) => {
     <SectionTitleWrapper {...props}>
       {subtitle && (
         <h2>
-          {isCenter ? <img src={sectionTitleShape2} alt="" /> : ""}
+          {isCenter ? <img className="inline-block" src={sectionTitleShape2} alt="" /> : ""}
           {subtitle}{" "}
-          <img src={sectionTitleShape} alt="devzukis nft section title shape" />{" "}
+          <img className="inline-block" src={sectionTitleShape} alt="devzukis nft section title shape" />{" "}
         </h2>
       )}
       {title && <h3>{title}</h3>}
