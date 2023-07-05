@@ -1,4 +1,3 @@
-import SectionTitle from "../../../common/sectionTitle";
 import AboutStyleWrapper from "./About.style";
 import greenBean from "../../../assets/images/greenBean.webp";
 
@@ -25,24 +24,6 @@ const ClaimStatus = (props) => {
   }
 
   return element;
-}
-
-const ClaimStatusText = (props) => {
-  let text = "Green Bean Checker";
-  if(props.claimStatus !== null) {
-    if(props.claimStatus) {
-      text = "THIS AZUKI HAS NOT CLAIMED THEIR BEAN YET";
-    } else {
-      text = "THIS AZUKI HAS CLAIMED THEIR BEAN";
-    }
-  }
-
-  return <SectionTitle
-    className="text-center"
-    isCenter={true}
-    title={text}
-    subtitle="Green Bean Checker"
-  />;
 }
 
 const About = () => {
