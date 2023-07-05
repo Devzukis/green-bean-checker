@@ -22,7 +22,7 @@ const About = () => {
   }
 
   const getAzukiTokenIds = async () => {
-    const response = await fetch('http://localhost:8080/unclaimed');
+    const response = await fetch('https://api.greenbean.devzukis.com/unclaimed');
     const data = await response.json();
     console.log('data: ', data);
     setTokenIds(data.tokenIds);
