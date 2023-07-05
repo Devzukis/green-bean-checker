@@ -1,4 +1,3 @@
-import AboutStyleWrapper from "./About.style";
 import greenBean from "../../../assets/images/greenBean.webp";
 
 import { useContractRead } from 'wagmi';
@@ -38,8 +37,7 @@ const About = () => {
   }
 
   return (
-    <AboutStyleWrapper className="v2_about_us_section" id="about">
-      <div className="container mx-auto">
+      <div className="container mx-auto pt-20">
         <div className='flex flex-col items-center gap-4 -mt-5'>
           <img src={greenBean} className='w-72'/>
           <p className='text-4xl text-black font-bold -mt-10'>GREEN BEAN CHECKER</p>
@@ -66,7 +64,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </AboutStyleWrapper>
   );
 };
 
