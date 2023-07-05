@@ -40,7 +40,7 @@ const About = () => {
       <div className="container mx-auto pt-20">
         <div className='flex flex-col items-center gap-4 -mt-5'>
           <img src={greenBean} className='w-72'/>
-          <p className='text-4xl text-black font-bold -mt-10'>GREEN BEAN CHECKER</p>
+          <p className='text-4xl text-black text-center font-bold -mt-10'>GREEN BEAN CHECKER</p>
         </div>
         <div className='flex flex-col gap-4 items-center w-full pt-20 text-center'>
           <p>Enter an Azuki ID below to check if they have claimed their green bean airdrop.</p>
