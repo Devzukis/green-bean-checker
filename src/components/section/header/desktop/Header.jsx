@@ -34,8 +34,8 @@ const Header = () => {
 
   return (
     <>
-      <NavWrapper className="bithu_header" id="navbar">
-        <div className="container mt-10">
+      <NavWrapper className="bithu_header sticky" id="navbar">
+        <div className="container">
           {/* Main Menu Start */}
           <div className="bithu_menu_sect">
             <div className="bithu_menu_left_sect">
