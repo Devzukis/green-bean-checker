@@ -15,6 +15,7 @@ const GlobalStyles = createGlobalStyle`
 
 html,
 body {
+    height: 100%;
     font-size: 16px; 
     vertical-align: baseline;
     font-weight: 500;
@@ -24,7 +25,8 @@ body {
     background-color: #040C12 !important; 
 }
 
-[data-rk] {
+#root {
+    background-color: #5abdb3;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -74,7 +76,7 @@ ul, ol {
 
 html,
 body, p, a{
-    font-family: 'Inter', sans-serif;
+    font-family: 'Helvetica Neue';
     font-size: 16px;
     color: rgba(255, 255, 255, 0.8);
 } 
@@ -117,14 +119,7 @@ body, p, a{
     &::-webkit-scrollbar{
       display: none;
     }
-  }
-
-@media (min-width: 1400px){
-    .container{
-        max-width: 1200px;
-        padding: 0px 20px;
-    }
-} 
+  } 
 
 `;
 
