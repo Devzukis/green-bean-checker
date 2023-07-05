@@ -1,11 +1,8 @@
-import { useModal } from "../../../../utils/ModalContext";
 import { useEffect, useState } from "react";
-import { FaDiscord, FaTwitter } from "react-icons/fa";
-import { MdNotes } from "react-icons/md";
-import Button from "../../../../common/button";
+import { FaDiscord, FaGithub, FaTwitter } from "react-icons/fa";
 import NavWrapper from "./Header.style";
 import MobileMenu from "../mobile/MobileMenu";
-import logo from "../../../../assets/images/logo.jpg";
+import logo from "../../../../assets/images/logo.png";
 
 const Header = () => {
   const [isMobileMenu, setMobileMenu] = useState(false);
@@ -38,27 +35,29 @@ const Header = () => {
   return (
     <>
       <NavWrapper className="bithu_header" id="navbar">
-        <div className="container">
+        <div className="container mt-10">
           {/* Main Menu Start */}
           <div className="bithu_menu_sect">
             <div className="bithu_menu_left_sect">
               <div className="logo flex">
-                <a href="/">
-                  <img src={logo} alt="devzukis nft logo" style={{width: "60px", borderRadius: "50%"}} />
+                <a href="https://www.devzukis.com" target='_blank'>
+                  <img src={logo} alt="devzukis nft logo" style={{width: "100px"}} />
                 </a>
               </div>
             </div>
             <div className="bithu_menu_right_sect bithu_v1_menu_right_sect">
-              <div className="bithu_menu_btns">
-                <button className="menu_btn px-[6px]" onClick={() => handleMobileMenu()}>
-                  <MdNotes />
-                </button>
-                <Button sm variant="outline" className="join_btn" onClick={onDiscordClick}>
-                  <FaDiscord /> Join
-                </Button>
-                <Button sm variant="outline" className="join_btn" onClick={onTwitterClick}>
-                  <FaTwitter /> Follow
-                </Button>
+              <div className="flex fjustify-end">
+                <div id='links' className='flex gap-4'>
+                  <a href='http://twitter.com/devzukis' target='_blank' className='text-lg text-black'>
+                    <FaTwitter />
+                  </a>
+                  <a href='https://discord.com/invite/2F9XuN8s' target='_blank' className='text-lg text-black'>
+                    <FaDiscord />
+                  </a>
+                  <a href='https://github.com/Devzukis' target='_blank' className='text-lg text-black'>
+                    <FaGithub />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
