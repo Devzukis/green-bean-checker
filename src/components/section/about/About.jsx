@@ -11,11 +11,12 @@ const About = () => {
   const [showAzuki, setShowAzuki] = useState(false);
   const ipfs = "https://ipfs.io/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/";
 
-  const getClaimData = async () => {
-    await getAzukiClaimStatus();
-    const src = getAzukiImage(tokenID);
+  const getClaimData = async (tokenId) => {
+    await getAzukiClaimStatus(tokenId);
+    const src = getAzukiImage(tokenId);
     setAzukiImage(src);
     setShowAzuki(true);
+    setTokenID(tokenId);
   }
 
   const getAzukiImage = (tokenId) => {
@@ -28,8 +29,8 @@ const About = () => {
     setTokenIds(data.tokenIds);
   }
 
-  const getAzukiClaimStatus = async () => {
-    const response = await fetch('https://api.greenbean.devzukis.com/check/' + tokenID);
+  const getAzukiClaimStatus = async (tokenId) => {
+    const response = await fetch('https://api.greenbean.devzukis.com/check/' + tokenId);
     const data = await response.json();
     setClaimStatus(data.canClaim);
   }
@@ -42,14 +43,7 @@ const About = () => {
   const onModalClose = () => {
     setShowAzuki(false);
     setAzukiImage(undefined);
-  }
-
-  const onAzukiClick = async (tokenId) => {
-    await getAzukiClaimStatus();
-    const src = getAzukiImage(tokenId);
-    setTokenID(tokenId);
-    setAzukiImage(src);
-    setShowAzuki(true);
+    setClaimStatus(undefined);
   }
 
   useEffect(() => {
@@ -67,7 +61,7 @@ const About = () => {
           <p>Enter an Azuki ID below to check if they have claimed their green bean airdrop.</p>
           <div className='flex justify-end w-full'>
               <input className='rounded-l-lg w-full' type="text" id="azukiNumber" placeholder="Search Azuki ID" style={{padding: "0.5rem 2rem"}} onChange={onTokenIdChange}/>
-              <button onClick={getClaimData} className='rounded-r-lg' style={{background: "#be3142", color: "#fff", border: "none", boxShadow: "none", padding: "0.5rem 1rem"}}>Check</button>
+              <button onClick={() => getClaimData(tokenID)} className='rounded-r-lg' style={{background: "#be3142", color: "#fff", border: "none", boxShadow: "none", padding: "0.5rem 1rem"}}>Check</button>
           </div>
           <div className='flex justify-center w-full'>
             <button className='cursor-pointer text-sm text-white bg-red rounded-l-lg p-2 w-full'>Unclaimed</button>
@@ -78,8 +72,8 @@ const About = () => {
               tokenIds.length > 0 && tokenIds.map(
                 tokenId => {
                   return (
-                    <div className='cursor-pointer' onClick={() => onAzukiClick(tokenId)}>
-                      <Card key={tokenId} src={getAzukiImage(tokenId)} title={`Azuki #${tokenId}`}/>
+                    <div key={tokenId} className='cursor-pointer' onClick={() => getClaimData(tokenId)}>
+                      <Card src={getAzukiImage(tokenId)} title={`Azuki #${tokenId}`}/>
                     </div>
                   )
                 }
