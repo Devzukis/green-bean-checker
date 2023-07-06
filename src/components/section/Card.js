@@ -10,7 +10,7 @@ const Card = (props) => {
     }
 
     return (
-        <div className='flex flex-col bg-white gap-2 sm:gap-4 p-2.5 sm:p-4 rounded-lg'>
+        <div className='flex flex-col bg-white gap-2 sm:gap-4 p-2 sm:p-4 rounded-lg'>
             <img className='rounded-lg' src={source} onError={onImageLoadError}/>
             <p className='text-sm sm:text-lg text-black font-bold mb-0'>{title}</p>
         </div>
