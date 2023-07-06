@@ -1,5 +1,4 @@
-import FooterStyleWrapper from "./Footer.style";
-import { FaDiscord, FaGithub, FaTwitter } from "react-icons/fa";
+
 const Footer = () => {
   return (
     <div className="flex justify-center bg-inherit p-10">
