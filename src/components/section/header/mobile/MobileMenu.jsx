@@ -1,6 +1,6 @@
 import { FaDiscord, FaTwitter } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
-import logo from "../../../../assets/images/logo.jpg";
+import logo from "../../../../assets/images/logo.png";
 
 import MobileMenuStyleWrapper from "./MobileMenu.style";
 
