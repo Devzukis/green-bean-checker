@@ -37,7 +37,7 @@ const Header = () => {
                 </a>
               </div>
             </div>
-            <div className="bithu_menu_right_sect bithu_v1_menu_right_sect">
+            <div className="bithu_menu_right_sect bithu_v1_menu_right_sect pr-4">
               <div className="flex fjustify-end">
                 <div id='links' className='flex gap-4'>
                   <a href='http://twitter.com/devzukis' target='_blank' className='text-lg text-black'>
