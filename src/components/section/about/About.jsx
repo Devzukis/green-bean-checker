@@ -48,7 +48,7 @@ const About = () => {
             <button className='cursor-pointer text-sm text-white bg-red rounded-l-lg p-2 w-full'>Unclaimed</button>
             <button className='cursor-pointer text-sm bg-white rounded-r-lg p-2 w-full' disabled>Recent Claims</button>
           </div>
-          <div id='azukis' className='grid gap-x-6 gap-y-8 grid-cols-3 sm:grid-cols-4 pt-10 overflow-scroll h-[820px]'>
+          <div id='azukis' className='grid gap-x-6 gap-y-8 grid-cols-3 sm:grid-cols-4 pt-10 overflow-scroll h-96 scrollbar pr-4'>
             {
               tokenIds.length > 0 && tokenIds.map(
                 tokenId => {
