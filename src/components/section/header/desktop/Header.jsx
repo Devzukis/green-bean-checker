@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <>
       <NavWrapper id="navbar">
-        <div className="container pt-10">
+        <div className="container">
           {/* Main Menu Start */}
           <div className="bithu_menu_sect">
             <div className="bithu_menu_left_sect">
