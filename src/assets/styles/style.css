@@ -25,3 +25,17 @@
 
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+    height: 100%;
+    font-size: 16px;
+    vertical-align: baseline;
+    font-weight: 500;
+    line-height: 1.6;
+    font-weight: 500;
+    overflow-x: hidden;
+    background-color: #5abdb3;
+    font-family: "Helvetica Neue";
+    letter-spacing: .025em;
+}
