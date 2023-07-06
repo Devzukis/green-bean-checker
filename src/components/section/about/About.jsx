@@ -1,7 +1,7 @@
 import Card from '../Card';
 import greenBean from "../../../assets/images/greenBean.webp";
 import { useState, useEffect } from "react";
-import { Modal } from 'antd';
+import { Button, Modal } from 'antd';
 
 const About = () => {
   const [tokenID, setTokenID] = useState();
@@ -64,8 +64,8 @@ const About = () => {
               <button onClick={() => getClaimData(tokenID)} className='rounded-r-lg' style={{background: "#be3142", color: "#fff", border: "none", boxShadow: "none", padding: "0.5rem 1rem"}}>Check</button>
           </div>
           <div className='flex justify-center w-full'>
-            <button className='cursor-pointer text-sm text-white bg-red rounded-l-lg p-2 w-full'>Unclaimed</button>
-            <button className='cursor-pointer text-sm bg-white rounded-r-lg p-2 w-full' disabled>Recent Claims</button>
+            <Button className='text-white bg-red rounded-l-lg rounded-r-none h-10 p-2 w-full' type='danger'>Unclaimed</Button>
+            <Button className='bg-white rounded-r-lg rounded-l-none h-10 p-2 w-full' disabled>Recent Claims</Button>
           </div>
           <div id='azukis' className='grid gap-x-6 gap-y-8 grid-cols-3 sm:grid-cols-4 pt-10 overflow-scroll w-full h-96 scrollbar pr-4'>
             {
