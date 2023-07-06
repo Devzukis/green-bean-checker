@@ -25,7 +25,6 @@ const About = () => {
   const getAzukiTokenIds = async () => {
     const response = await fetch('https://api.greenbean.devzukis.com/unclaimed');
     const data = await response.json();
-    console.log('data: ', data);
     setTokenIds(data.tokenIds);
   }
 
@@ -45,6 +44,14 @@ const About = () => {
     setAzukiImage(undefined);
   }
 
+  const onAzukiClick = async (tokenId) => {
+    await getAzukiClaimStatus();
+    const src = getAzukiImage(tokenId);
+    setTokenID(tokenId);
+    setAzukiImage(src);
+    setShowAzuki(true);
+  }
+
   useEffect(() => {
     getAzukiTokenIds();
   }, [])
@@ -55,10 +62,6 @@ const About = () => {
           <img src={greenBean} className='w-[200px]'/>
           <p className='text-4xl text-black text-center font-bold -mt-10'>GREEN BEAN CHECKER</p>
         </div>
-        
-        <Modal open={showAzuki} closable={false} okCancel={false} footer={false} onCancel={onModalClose}>
-          <Card src={`${azukiImage}`} title={`Azuki #${tokenID}`} canClaim={claimStatus}/>
-        </Modal>
 
         <div className='flex flex-col gap-4 items-center pt-20 text-center'>
           <p>Enter an Azuki ID below to check if they have claimed their green bean airdrop.</p>
@@ -75,13 +78,19 @@ const About = () => {
               tokenIds.length > 0 && tokenIds.map(
                 tokenId => {
                   return (
-                    <Card key={tokenId} src={getAzukiImage(tokenId)} title={`Azuki #${tokenId}`}/>
+                    <div className='cursor-pointer' onClick={() => onAzukiClick(tokenId)}>
+                      <Card key={tokenId} src={getAzukiImage(tokenId)} title={`Azuki #${tokenId}`}/>
+                    </div>
                   )
                 }
               )
             }
           </div>
         </div>
+
+        <Modal open={showAzuki} closable={false} okCancel={false} footer={false} onCancel={onModalClose}>
+          <Card src={`${azukiImage}`} title={`Azuki #${tokenID}`} canClaim={claimStatus} tokenId={tokenID}/>
+        </Modal>
       </div>
   );
 };
