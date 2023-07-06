@@ -9,6 +9,7 @@ const About = () => {
   const [azukiImage, setAzukiImage] = useState("");
   const [tokenIds, setTokenIds] = useState([]);
   const [showAzuki, setShowAzuki] = useState(false);
+  const [view, setView] = useState('unclaimed');
   const ipfs = "https://ipfs.io/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/";
 
   const getClaimData = async (tokenId) => {
@@ -64,22 +65,43 @@ const About = () => {
               <button onClick={() => getClaimData(tokenID)} className='rounded-r-lg' style={{background: "#be3142", color: "#fff", border: "none", boxShadow: "none", padding: "0.5rem 1rem"}}>Check</button>
           </div>
           <div className='flex justify-center w-full'>
-            <Button className='text-white bg-red rounded-l-lg rounded-r-none h-10 p-2 w-full' type='danger'>Unclaimed</Button>
-            <Button className='bg-white rounded-r-lg rounded-l-none h-10 p-2 w-full' disabled>Recent Claims</Button>
+            <Button 
+              className={`${view === 'unclaimed' ? 'bg-red text-white' : 'bg-white text-black'} rounded-l-lg rounded-r-none h-10 p-2 w-full`}
+              type='ghost'
+              onClick={() => setView('unclaimed')}
+            >
+              Unclaimed
+            </Button>
+            <Button 
+              className={`${view === 'recent-claims' ? 'bg-red text-white' : 'bg-white text-black'} rounded-r-lg rounded-l-none h-10 p-2 w-full`} 
+              type='ghost'
+              onClick={() => setView('recent-claims')}
+            >
+              Recent Claims
+            </Button>
           </div>
-          <div id='azukis' className='grid gap-x-6 gap-y-8 grid-cols-3 sm:grid-cols-4 pt-10 overflow-scroll w-full h-96 scrollbar pr-4'>
-            {
-              tokenIds.length > 0 && tokenIds.map(
-                tokenId => {
-                  return (
-                    <div key={tokenId} className='cursor-pointer' onClick={() => getClaimData(tokenId)}>
-                      <Card src={getAzukiImage(tokenId)} title={`Azuki #${tokenId}`}/>
-                    </div>
-                  )
-                }
-              )
+          {
+            view === 'unclaimed' &&
+            <div id='azukis' className='grid gap-x-6 gap-y-8 grid-cols-3 sm:grid-cols-4 pt-10 overflow-scroll w-full h-96 scrollbar pr-4'>
+              {
+                tokenIds.length > 0 && tokenIds.map(
+                  tokenId => {
+                    return (
+                      <div key={tokenId} className='cursor-pointer' onClick={() => getClaimData(tokenId)}>
+                        <Card src={getAzukiImage(tokenId)} title={`Azuki #${tokenId}`}/>
+                      </div>
+                    )
+                  }
+                )
+              }
+            </div>
+          }
+          {
+              view === 'recent-claims' &&
+              <div className='flex justify-center items-center bg-white text-red uppercase font-bold h-96 w-full'>
+                &ldquo; Coming Soon &rdquo;
+              </div>
             }
-          </div>
         </div>
 
         <Modal open={showAzuki} closable={false} okCancel={false} footer={false} onCancel={onModalClose}>
