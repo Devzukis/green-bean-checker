@@ -19,13 +19,13 @@ const Card = (props) => {
             <p className='text-sm text-center sm:text-lg text-black font-bold mb-0'>{title}</p>
             {
                 canClaim === true && 
-                <p className='text-center text-white uppercase bg-green rounded-sm'>
+                <p className='text-center text-black uppercase bg-green rounded-sm'>
                     green bean unclaimed
                 </p>
             }
             {
                 canClaim === false &&
-                <p className='text-center text-black uppercase bg-red rounded-sm'>
+                <p className='text-center text-white uppercase bg-red rounded-sm'>
                     green bean claimed
                 </p>
             }
