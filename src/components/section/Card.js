@@ -24,10 +24,10 @@ const Card = (props) => {
             {
                 canClaim !== undefined && 
                 <div className='flex justify-center gap-2'>
-                    <a className='self-center' href={`${openseaURI}/${tokenId}`} target='_blank'>
+                    <a href={`${openseaURI}/${tokenId}`} target='_blank'>
                         <img className='rounded-full w-6' src={opensea}/>
                     </a>
-                    <a className='self-center' href={`${blurURI}/${tokenId}`} target='_blank'>
+                    <a href={`${blurURI}/${tokenId}`} target='_blank'>
                         <img className='rounded-full w-6' src={blur}/>
                     </a>
                 </div>
