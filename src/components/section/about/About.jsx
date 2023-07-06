@@ -33,27 +33,27 @@ const About = () => {
   }, [])
 
   return (
-      <div className="container mx-auto">
+      <div className="mx-auto max-w-2xl px-4">
         <div className='flex flex-col items-center gap-4 -mt-5'>
-          <img src={greenBean} className='w-72'/>
+          <img src={greenBean} className='w-[200px]'/>
           <p className='text-4xl text-black text-center font-bold -mt-10'>GREEN BEAN CHECKER</p>
         </div>
-        <div className='flex flex-col gap-4 items-center w-full pt-20 text-center'>
+        <div className='flex flex-col gap-4 items-center pt-20 text-center'>
           <p>Enter an Azuki ID below to check if they have claimed their green bean airdrop.</p>
-          <div className='flex w-fit'>
-              <input className='rounded-l-lg' type="text" id="azukiNumber" placeholder="Search Azuki ID" style={{padding: "0.5rem 2rem"}} onChange={e=>setTokenID([e.target.value+''])}/>
+          <div className='flex justify-end w-full'>
+              <input className='rounded-l-lg w-full' type="text" id="azukiNumber" placeholder="Search Azuki ID" style={{padding: "0.5rem 2rem"}} onChange={e=>setTokenID([e.target.value+''])}/>
               <button onClick={getClaimData} className='rounded-r-lg' style={{background: "#be3142", color: "#fff", border: "none", boxShadow: "none", padding: "0.5rem 1rem"}}>Check</button>
           </div>
-          <div className='flex justify-center w-fit'>
-            <button className='text-sm text-white bg-red rounded-l-lg p-2 w-fit'>Unclaimed</button>
-            <button className='text-sm bg-white rounded-r-lg p-2 w-fit' disabled>Recent Claims</button>
+          <div className='flex justify-center w-full'>
+            <button className='cursor-pointer text-sm text-white bg-red rounded-l-lg p-2 w-full'>Unclaimed</button>
+            <button className='cursor-pointer text-sm bg-white rounded-r-lg p-2 w-full' disabled>Recent Claims</button>
           </div>
           <div id='azukis' className='grid gap-4 grid-cols-3 sm:grid-cols-4 pt-10 overflow-scroll h-[820px]'>
             {
               tokenIds.length > 0 && tokenIds.map(
                 tokenId => {
                   return (
-                    <Card src={getAzukiImage(tokenId)} title={`Azuki #${tokenId}`}/>
+                    <Card key={tokenId} src={getAzukiImage(tokenId)} title={`Azuki #${tokenId}`}/>
                   )
                 }
               )

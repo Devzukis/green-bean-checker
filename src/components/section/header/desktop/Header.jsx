@@ -24,14 +24,6 @@ const Header = () => {
     };
   }, []);
 
-  const onDiscordClick = () => {
-    window.open('https://discord.com/invite/2F9XuN8s', '_blank');
-  }
-
-  const onTwitterClick = () => {
-    window.open('https://twitter.com/devzukis', '_blank');
-  }
-
   return (
     <>
       <NavWrapper id="navbar">
