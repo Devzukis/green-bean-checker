@@ -5,40 +5,28 @@ import Modal from "../../../common/modal/Modal";
 
 const About = () => {
   const [tokenID, setTokenID] = useState();
-  const [claimStatus, setClaimStatus] = useState(null);
-  const [azukiImage, setAzukiImage] = useState("");
-  const [tokenIds, setTokenIds] = useState([]);
+  const [azuki, setAzuki] = useState();
+  const [azukis, setAzukis] = useState([]);
   const [showAzuki, setShowAzuki] = useState(false);
   const [view, setView] = useState("unclaimed");
-  const ipfs =
-    "https://ipfs.io/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/";
+  const ipfs = "https://ipfs.io/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg";
 
   const getClaimData = async (tokenId) => {
-    await getAzukiClaimStatus(tokenId);
-    const src = getAzukiImage(tokenId);
-    setAzukiImage(src);
-    setShowAzuki(true);
+    const response = await fetch(
+      "https://api.greenbean.devzukis.com/v1/check/" + tokenId
+    );
+    const data = await response.json();
+    setAzuki(data);
     setTokenID(tokenId);
+    setShowAzuki(true);
   };
 
-  const getAzukiImage = (tokenId) => {
-    return ipfs + tokenId.toString() + ".png";
-  };
-
-  const getAzukiTokenIds = async () => {
+  const getAzukis = async () => {
     const response = await fetch(
-      "https://api.greenbean.devzukis.com/unclaimed"
+      "https://api.greenbean.devzukis.com/v1/can-claim"
     );
     const data = await response.json();
-    setTokenIds(data.tokenIds);
-  };
-
-  const getAzukiClaimStatus = async (tokenId) => {
-    const response = await fetch(
-      "https://api.greenbean.devzukis.com/check/" + tokenId
-    );
-    const data = await response.json();
-    setClaimStatus(data.canClaim);
+    setAzukis(data);
   };
 
   const onTokenIdChange = (event) => {
@@ -50,13 +38,12 @@ const About = () => {
     setShowAzuki(false);
 
     setTimeout(() => {
-      setAzukiImage(undefined);
-      setClaimStatus(undefined);
+      setAzuki(undefined);
     }, 300);
   };
 
   useEffect(() => {
-    getAzukiTokenIds();
+    getAzukis();
   }, []);
 
   return (
@@ -98,7 +85,7 @@ const About = () => {
             } h-auto rounded-l-lg rounded-r-none p-[10px] sm:p-3 w-full text-sm font-bold font-helvetica hover:opacity-80`}
             onClick={() => setView("unclaimed")}
           >
-            Unclaimed
+            Unclaimed { azukis.length > 0 && `(${azukis.length})`}
           </button>
           <button
             className={`${
@@ -116,17 +103,17 @@ const About = () => {
             id="azukis"
             className="grid gap-x-6 gap-y-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 overflow-scroll h-96 w-full scrollbar pt-2 px-3"
           >
-            {tokenIds.length > 0 &&
-              tokenIds.map((tokenId) => {
+            {azukis.length > 0 &&
+              azukis.map((azuki) => {
                 return (
                   <div
-                    key={tokenId}
+                    key={azuki.tokenId}
                     className="cursor-pointer"
-                    onClick={() => getClaimData(tokenId)}
+                    onClick={() => getClaimData(azuki.tokenId)}
                   >
                     <Card
-                      src={getAzukiImage(tokenId)}
-                      title={`Azuki #${tokenId}`}
+                      src={azuki.thumbnailUrl}
+                      title={`Azuki #${azuki.tokenId}`}
                       isSmall
                     />
                   </div>
@@ -141,14 +128,16 @@ const About = () => {
         )}
       </div>
 
-      <Modal isOpen={showAzuki} toggleModal={onModalClose}>
+      {azuki && (
+        <Modal isOpen={showAzuki} toggleModal={onModalClose}>
         <Card
-          src={`${azukiImage}`}
+          src={`${ipfs}/${tokenID}.png`}
           title={`Azuki #${tokenID}`}
-          canClaim={claimStatus}
+          canClaim={azuki.canClaim}
           tokenId={tokenID}
         />
       </Modal>
+      )}
     </main>
   );
 };
