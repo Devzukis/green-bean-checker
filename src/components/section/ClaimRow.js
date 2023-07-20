@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import greenbean from "../../assets/images/greenBean.webp";
+import ReactTimeAgo from 'react-time-ago';
 
 const ClaimRow = (props) => {
     const { claim } = props;
-    const { thumbnailUrl, tokenId, claimTime } = claim;
+    const { thumbnailUrl, tokenId, claimedAt } = claim;
     const [source, setSource] = useState(thumbnailUrl);
     const onImageLoadError = () => {
         setSource(greenbean);
@@ -25,7 +26,7 @@ const ClaimRow = (props) => {
             {`Azuki #${tokenId} just claimed it's green bean`}
           </p>
           <p className="pr-[25px]">
-            {claimTime}
+            <ReactTimeAgo date={new Date(claimedAt)} locale="en-US"/>
           </p>
         </div>
       );
