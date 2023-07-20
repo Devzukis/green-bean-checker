@@ -22,7 +22,7 @@ const ClaimRow = (props) => {
             onError={onImageLoadError}
             alt="azuki img"
           />
-          <p className='text-center text-black text-xs font-bold'>
+          <p className='text-center text-black text-xs sm:text-sm font-bold'>
             {`Azuki #${tokenId} just claimed it's green bean`}
           </p>
           <p className="text-black/50 sm:pr-[15px]">
