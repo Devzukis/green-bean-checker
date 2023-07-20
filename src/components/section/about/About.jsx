@@ -2,12 +2,14 @@ import Card from "../Card";
 import greenBean from "../../../assets/images/greenBean.webp";
 import { useState, useEffect } from "react";
 import Modal from "../../../common/modal/Modal";
+import ClaimRow from "../ClaimRow";
 
 const About = () => {
   const [tokenID, setTokenID] = useState();
   const [azuki, setAzuki] = useState();
   const [azukis, setAzukis] = useState([]);
   const [showAzuki, setShowAzuki] = useState(false);
+  const [recentClaims, setRecentClaims] = useState([]);
   const [view, setView] = useState("unclaimed");
   const ipfs = "https://ipfs.io/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg";
 
@@ -29,6 +31,14 @@ const About = () => {
     setAzukis(data);
   };
 
+  const getRecentClaims = async () => {
+    const response = await fetch(
+      "https://api.greenbean.devzukis.com/v1/recent-claims"
+    );
+    const data = await response.json();
+    setRecentClaims(data);
+  }
+
   const onTokenIdChange = (event) => {
     event.preventDefault();
     setTokenID(+event.target.value);
@@ -44,6 +54,7 @@ const About = () => {
 
   useEffect(() => {
     getAzukis();
+    getRecentClaims();
   }, []);
 
   return (
@@ -101,7 +112,7 @@ const About = () => {
         {view === "unclaimed" && (
           <div
             id="azukis"
-            className="grid gap-x-6 gap-y-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 overflow-scroll h-96 w-full scrollbar pt-2 px-3"
+            className="grid gap-x-6 gap-y-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 overflow-scroll h-96 w-full scrollbar pt-2 pr-2"
           >
             {azukis.length > 0 &&
               azukis.map((azuki) => {
@@ -122,8 +133,21 @@ const About = () => {
           </div>
         )}
         {view === "recent-claims" && (
-          <div className="flex justify-center items-center bg-white text-red uppercase font-bold h-96 w-max-[624px] w-full rounded-lg">
-            &ldquo; Coming Soon &rdquo;
+          <div id='recent' className="grid gap-y-2 grid-cols-1 overflow-scroll h-96 w-full scrollbar pt-2 pr-2">
+            {recentClaims.length > 0 &&
+              recentClaims.map((claim) => {
+                return (
+                  <div
+                    key={claim.tokenId}
+                    className='cursor-pointer w-full'
+                    onClick={() => {getClaimData(claim.tokenId)}}
+                  >
+                    <ClaimRow claim={claim}/>
+                  </div>
+                )
+              })
+
+            }
           </div>
         )}
       </div>
