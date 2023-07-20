@@ -15,18 +15,18 @@ const ClaimRow = (props) => {
     }, [thumbnailUrl]);
 
     return (
-        <div className='flex flex-row justify-between items-center bg-white rounded-md relative gap-2 p-2'>
+        <div className='flex flex-row justify-between items-center bg-white rounded-md relative p-[10px]'>
           <img
             className="rounded-md w-12 h-12"
             src={source}
             onError={onImageLoadError}
             alt="azuki img"
           />
-          <p className='text-center text-black font-bold mb-0 text-sm'>
+          <p className='text-center text-black text-xs font-bold'>
             {`Azuki #${tokenId} just claimed it's green bean`}
           </p>
-          <p className="pr-[25px]">
-            <ReactTimeAgo date={new Date(claimedAt)} locale="en-US"/>
+          <p className="text-black/50 sm:pr-[15px]">
+            <ReactTimeAgo date={new Date(claimedAt)} locale="en-US" timeStyle='twitter'/>
           </p>
         </div>
       );
