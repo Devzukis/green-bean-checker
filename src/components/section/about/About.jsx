@@ -14,29 +14,42 @@ const About = () => {
   const ipfs = "https://ipfs.io/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg";
 
   const getClaimData = async (tokenId) => {
-    const response = await fetch(
-      "https://api.greenbean.devzukis.com/v1/check/" + tokenId
-    );
-    const data = await response.json();
-    setAzuki(data);
-    setTokenID(tokenId);
-    setShowAzuki(true);
+    try {
+      const response = await fetch(
+        "https://api.greenbean.devzukis.com/v1/check/" + tokenId
+      );
+      const data = await response.json();
+      setAzuki(data);
+      setTokenID(tokenId);
+      setShowAzuki(true);
+    } catch (error) {
+      setAzuki({});
+      setShowAzuki(false);
+    }
   };
 
   const getAzukis = async () => {
-    const response = await fetch(
-      "https://api.greenbean.devzukis.com/v1/can-claim"
-    );
-    const data = await response.json();
-    setAzukis(data);
+    try {
+      const response = await fetch(
+        "https://api.greenbean.devzukis.com/v1/can-claim"
+      );
+      const data = await response.json();
+      setAzukis(data);
+    } catch (error) {
+      setAzukis([]);
+    }
   };
 
   const getRecentClaims = async () => {
-    const response = await fetch(
-      "https://api.greenbean.devzukis.com/v1/recent-claims"
-    );
-    const data = await response.json();
-    setRecentClaims(data);
+    try {
+      const response = await fetch(
+        "https://api.greenbean.devzukis.com/v1/recent-claims"
+      );
+      const data = await response.json();
+      setRecentClaims(data);
+    } catch (error) {
+      setRecentClaims([]);
+    }
   }
 
   const onTokenIdChange = (event) => {
